@@ -1,0 +1,32 @@
+.cardContainer {
+  width: 300px;
+  height: 200px;
+  background-color: lightsalmon;
+  /* display: flex; */
+  flex-direction: column;
+  padding: 2rem;
+}
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+}
+.cardButton {
+  padding: 0.5rem;
+  color: white;
+  background-color: black;
+  font-weight: 600;
+  width: 80px;
+  font-size: 14px;
+}
+.footer{
+  display: flex;
+  justify-content: space-between;
+}
+.line{
+  width: inherit;
+}
+.list{
+  color: brown;
+  font-size: 15px;
+  
+}
