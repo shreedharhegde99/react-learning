@@ -1,5 +1,6 @@
 import "./App.css";
-import EventHandling from "./Components/Events/EventHandling";
+import Form from "./Components/Form/Form";
+// import EventHandling from "./Components/Events/EventHandling";
 // import List from "./Components/List/List";
 // import ClassExample from "./Components/Classexample";
 // import Stateful, { Stateless } from "./Components/State";
@@ -13,7 +14,8 @@ function App() {
       Hello World !{/* <ClassExample /> */}
       {/* <PaymentCard/> */}
       {/* <List /> */}
-      <EventHandling />
+      {/* <EventHandling /> */}
+      <Form />
     </div>
   );
 }
