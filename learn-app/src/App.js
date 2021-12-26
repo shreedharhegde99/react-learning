@@ -1,5 +1,9 @@
 import "./App.css";
-import EventHandling from "./Components/Events/EventHandling";
+import Composiotion from "./Components/Composition/Composition";
+// import AirQuality from "./Components/Axios/AIrQualty";
+// import Axios from "./Components/Axios/Axios";
+// import Form from "./Components/Form/Form";
+// import EventHandling from "./Components/Events/EventHandling";
 // import List from "./Components/List/List";
 // import ClassExample from "./Components/Classexample";
 // import Stateful, { Stateless } from "./Components/State";
@@ -9,11 +13,8 @@ import EventHandling from "./Components/Events/EventHandling";
 
 function App() {
   return (
-    <div style={{ textAlign: "center" }} className="App">
-      Hello World !{/* <ClassExample /> */}
-      {/* <PaymentCard/> */}
-      {/* <List /> */}
-      <EventHandling />
+    <div className="App">
+      <Composiotion />
     </div>
   );
 }
