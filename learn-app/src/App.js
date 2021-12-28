@@ -1,5 +1,6 @@
 import "./App.css";
-import Composiotion from "./Components/Composition/Composition";
+import StyledComponent from "./Components/Composition/StyledComponent";
+// import Composiotion from "./Components/Composition/Composition";
 // import AirQuality from "./Components/Axios/AIrQualty";
 // import Axios from "./Components/Axios/Axios";
 // import Form from "./Components/Form/Form";
@@ -14,7 +15,7 @@ import Composiotion from "./Components/Composition/Composition";
 function App() {
   return (
     <div className="App">
-      <Composiotion />
+      <StyledComponent />
     </div>
   );
 }
