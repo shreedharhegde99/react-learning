@@ -5,8 +5,8 @@ import Login from "../Pages/Login";
 import Products from "../Pages/Products";
 import Cart from "../Pages/Cart";
 import Error from "../Pages/Error";
-import Accessories from "../Pages/Accessories";
-import ProductRoute from "./ProductRoute";
+import Category from "../Pages/Category";
+import productList from "../Lists/List";
 
 const PublicRoute = () => {
   return (
@@ -17,7 +17,7 @@ const PublicRoute = () => {
           exact
           render={(props) => <Products {...props} />}
         />
-        <Route path="/products/:category" />
+        <Route path="/products/:category" render={(props) => <Category {...props}product={productList }/>}/>
 
         <Route path="/login" render={(props) => <Login {...props} />} />
         <Route path="/cart" render={(props) => <Cart {...props} />} />

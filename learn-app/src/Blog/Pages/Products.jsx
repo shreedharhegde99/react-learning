@@ -28,7 +28,7 @@ class Products extends React.Component {
       <>
         <div style={style}>
           {productList.map((item, id) => {
-            const path = item.toLowerCase();
+            const path = item.name.toLowerCase();
             return (
               <ProductContainer key={id}>
                 <Link to={`${url}/${path}`}>
@@ -38,7 +38,7 @@ class Products extends React.Component {
                       alt="logo"
                     />
                   </Banner>
-                  {item}
+                  {item.name}
                 </Link>
               </ProductContainer>
             );
