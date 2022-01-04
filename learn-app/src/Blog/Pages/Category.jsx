@@ -1,26 +1,42 @@
-import React, { Component } from 'react';
-import { useParams } from 'react-router-dom';
-
-
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import productList from "../Lists/List";
+import items from "../Lists/ProductList";
+import {
+  ProductContainer,
+  Banner,
+  style,
+  ProductBanner,
+} from "./ProductStyles";
 
 const Category = (props) => {
-  
-  // const cat = useParams()
-  // console.log(cat.category)
-  console.log(props)
-  return(<div>cat</div>)
-}
+  const { category } = props.match.params;
+  const param = productList.find((item) => {
+    return item.name.toLowerCase() === category ? item : null;
+  });
+  const { id } = param;
+  const { list } = items[Number(id)];
+    const { url } = props.match;
 
 
-export default Category
-
-
-// https://i.imgur.com/lloVHyH.png
-// https://i.imgur.com/PdJw3d5.png
-// https://i.imgur.com/yoUriJx.png
-// https://i.imgur.com/uO1KAlp.png
-// https://i.imgur.com/QqVAwEV.png
-// https://i.imgur.com/Un1jzv7.png
-// https://i.imgur.com/SZWnrzI.png
-// https://i.imgur.com/wkJiva0.png
-// https://i.imgur.com/66PAFBX.png
+  // console.log(url);
+  return (
+    <>
+      <div style={style}>
+        {list?.map((item, i) => {
+          return (
+            <ProductContainer key={i}>
+              <Link to={`${url}/${item.name}`}>
+                <Banner>
+                  <ProductBanner src={item.image} alt="logo" />
+                </Banner>
+                {item.name}
+              </Link>
+            </ProductContainer>
+          );
+        })}
+      </div>
+    </>
+  );
+};
+export default Category;

@@ -7,6 +7,8 @@ import Cart from "../Pages/Cart";
 import Error from "../Pages/Error";
 import Category from "../Pages/Category";
 import productList from "../Lists/List";
+import items from "../Lists/ProductList";
+import Product from "../Pages/Product";
 
 const PublicRoute = () => {
   return (
@@ -17,7 +19,15 @@ const PublicRoute = () => {
           exact
           render={(props) => <Products {...props} />}
         />
-        <Route path="/products/:category" render={(props) => <Category {...props}product={productList }/>}/>
+        <Route
+          exact
+          path="/products/:category"
+          render={(props) => <Category {...props} product={productList} />}
+        />
+        <Route
+          path="/products/:category/:product"
+          render={(props) => <Product {...props} product={items} />}
+        />
 
         <Route path="/login" render={(props) => <Login {...props} />} />
         <Route path="/cart" render={(props) => <Cart {...props} />} />
