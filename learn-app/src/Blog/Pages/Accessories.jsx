@@ -3,7 +3,7 @@ import React from 'react';
 const Accessories = () => {
   return (
     <>
-    <div>accessories</div></>
+    <div>finally success</div></>
   )
 }
 

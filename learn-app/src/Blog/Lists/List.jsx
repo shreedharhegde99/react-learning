@@ -9,8 +9,9 @@ const productList =  [
   "Health&Beauty",
   "Home & Living",
   "Pets",
-  "Schhol supplies",
-  "Sports & LifeStyle",
+  "School supplies",
+  "Sports",
+  "LifeStyle",
   "Toys"
 ]
 
