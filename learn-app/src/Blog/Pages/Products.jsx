@@ -1,32 +1,17 @@
 import React from "react";
-import styled from "styled-components";
 import productList from "../Lists/List";
 import Data from "./DataProvider";
+import { Link } from "react-router-dom";
 
-const ProductContainer = styled.div`
-  height: 150px;
-  width: 150px;
-  margin: 10px;
-  padding: 10px;
-  border: solid red 2px;
-  font-size: 18px;
-  color: green;
-  text-align: center;
-  align-items: center;
-`;
-const Banner = styled.div`
-  height: 80px;
-  width: 80px;
-  border: solid black 2px;
-  margin: 10px;
-  padding: 2px;
-  justify-content: center;
-`;
-const style = {
-  display: "flex",
-  flexWrap: "wrap",
-  justifyContent: "space-between",
-};
+import {
+  ProductContainer,
+  Banner,
+  style,
+  ProductBanner,
+} from "./ProductStyles";
+import ProductRoute from "../Routes/ProductRoute";
+
+
 
 class Products extends React.Component {
   constructor(props) {
@@ -34,25 +19,38 @@ class Products extends React.Component {
   }
 
   render() {
+    const { url } = this.props.match
+    const{props}  = this
+    // console.log(url)
     return (
       <>
         <div style={style}>
           {productList.map((item, id) => {
+            const path = item.toLowerCase()
             return (
-              <ProductContainer key={id}>
-                <Banner>
-                  <img src="https://via.placeholder.com/60" alt="logo" />
-                </Banner>
-                {item}
-              </ProductContainer>
+              
+                <ProductContainer key={id}>
+                  <Link to={`${url}/${path}`}>
+                    <Banner>
+                      <ProductBanner
+                        src="https://i.imgur.com/eUmK64G.jpg"
+                        alt="logo"
+                      />
+                    </Banner>
+                    {item}
+                  </Link>
+              </ProductContainer >
+                              
+              
             );
           })}
         </div>
+        {/* <ProductRoute {...props}/> */}
       </>
-    );
+      );
+    }
   }
-}
-
+  
 Products.contextType = Data;
 
 export default Products;
