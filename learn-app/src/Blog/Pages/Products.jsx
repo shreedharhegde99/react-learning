@@ -44,14 +44,9 @@ class Products extends React.Component {
             );
           })}
         </div>
-        <ProductRoute {...props}/>
-
-        {/* <Switch>
-          <Route
-            path="/products/accessories"
-            render={(props) => <Accessories {...props} />}
-          />
-        </Switch> */}
+        <Route path="/products/accessories" render=
+        {(props) => <Accessories {...props} />}
+        />
       </>
     );
     }

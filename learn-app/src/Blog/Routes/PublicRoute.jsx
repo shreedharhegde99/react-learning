@@ -8,21 +8,20 @@ import Error from "../Pages/Error";
 import Accessories from "../Pages/Accessories";
 import ProductRoute from "./ProductRoute";
 
-
 const PublicRoute = () => {
   return (
     <Fragment>
       <Switch>
-        <Route path="/" exact render={(props) => <Home {...props} />} />
         <Route
           path="/products"
           exact
           render={(props) => <Products {...props} />}
         />
-        {/* <ProductRoute  /> */}
+        <Route path="/products/:category" />
 
-        <Route path="/login" render={(props) => <Login  {...props} />} />
+        <Route path="/login" render={(props) => <Login {...props} />} />
         <Route path="/cart" render={(props) => <Cart {...props} />} />
+        <Route path="/" exact render={(props) => <Home {...props} />} />
         <Route component={Error} />
       </Switch>
     </Fragment>
