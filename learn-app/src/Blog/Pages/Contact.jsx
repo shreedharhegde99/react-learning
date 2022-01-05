@@ -50,7 +50,9 @@ const Contact = () => {
                 <img style={Image} src={item.avatar} alt="contact" />
               </ImageBox>
               <Details>
-                <div>{item.name}</div>
+                <div>
+                  <strong>{item.name}</strong>
+                </div>
                 <div>{item.contact}</div>
                 <div>{item.email}</div>
               </Details>

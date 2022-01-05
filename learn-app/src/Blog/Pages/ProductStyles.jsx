@@ -34,6 +34,21 @@ const ProductBanner = styled.img`
  width:75px;
  padding:2px 3px;
  border-radius:10px; 
+`
+const CartConatiner = styled.div`
+display:flex;
+// font-size:15px;
+justify-content:space-between;
 
 `
-export { ProductContainer, Banner, style, ProductBanner };
+const Add = styled.div`
+font-size:10px;
+background:white;
+width:50px;
+border:solid black 1px;
+border-radius:10px;
+cursor:pointer;
+
+
+`
+export { ProductContainer, Banner, style, ProductBanner, CartConatiner, Add };

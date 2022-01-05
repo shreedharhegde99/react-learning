@@ -1,3 +1,4 @@
+import { render } from "@testing-library/react";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import productList from "../Lists/List";
@@ -7,19 +8,31 @@ import {
   Banner,
   style,
   ProductBanner,
+  CartConatiner,
+  Add,
 } from "./ProductStyles";
 
-const Category = (props) => {
-  const { category } = props.match.params;
+
+
+class Category extends React.Component{
+    
+
+  constructor(props) {
+    super(props)
+  }
+  handleClick = () => {
+    // console.log(item)
+  }
+  
+  
+  // console.log(props);
+  render(){
+  const { category } = this.props.match.params;
   const param = productList.find((item) => {
-    return item.name.toLowerCase() === category ? item : null;
-  });
+    return item.name.toLowerCase() === category ? item : null});
   const { id } = param;
   const { list } = items[Number(id)];
-    const { url } = props.match;
-
-
-  // console.log(url);
+    const { url } =this. props.match;
   return (
     <>
       <div style={style}>
@@ -32,12 +45,18 @@ const Category = (props) => {
                 </Banner>
                 {item.name} <br />
               </Link>
-                {`Rs${item.price}/-`}
+              <CartConatiner>
+                <div> {`Rs${item.price}/-`}</div>
+                <Add onClick={(i)=> console.log(i)}>
+                  ADD TO  Cart
+                </Add>
+              </CartConatiner>
             </ProductContainer>
           );
         })}
       </div>
     </>
   );
+  } 
 };
 export default Category;

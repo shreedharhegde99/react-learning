@@ -2,8 +2,6 @@ import React from "react";
 import productList from "../Lists/List";
 import Data from "./DataProvider";
 import { Link } from "react-router-dom";
-import { Route, Switch } from "react-router-dom";
-import Accessories from "./Accessories";
 
 import {
   ProductContainer,
@@ -11,7 +9,6 @@ import {
   style,
   ProductBanner,
 } from "./ProductStyles";
-import ProductRoute from "../Routes/ProductRoute";
 
 
 
@@ -44,9 +41,8 @@ class Products extends React.Component {
             );
           })}
         </div>
-        <Route path="/products/accessories" render=
-        {(props) => <Accessories {...props} />}
-        />
+       
+        
       </>
     );
     }
