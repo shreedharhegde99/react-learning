@@ -9,6 +9,7 @@ import Category from "../Pages/Category";
 import productList from "../Lists/List";
 import items from "../Lists/ProductList";
 import Product from "../Pages/Product";
+import Contact from "../Pages/Contact"
 
 const PublicRoute = () => {
   return (
@@ -26,11 +27,12 @@ const PublicRoute = () => {
         />
         <Route
           path="/products/:category/:product"
-          render={(props) => <Product {...props} product={items} />}
+          render={(props) => <Product {...props} />}
         />
 
         <Route path="/login" render={(props) => <Login {...props} />} />
         <Route path="/cart" render={(props) => <Cart {...props} />} />
+        <Route path="/contact" render={(props) => <Contact {...props} />} />
         <Route path="/" exact render={(props) => <Home {...props} />} />
         <Route component={Error} />
       </Switch>
