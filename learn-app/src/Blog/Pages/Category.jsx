@@ -20,9 +20,7 @@ class Category extends React.Component{
   constructor(props) {
     super(props)
   }
-  handleClick = () => {
-    // console.log(item)
-  }
+  
   
   
   // console.log(props);
@@ -47,9 +45,7 @@ class Category extends React.Component{
               </Link>
               <CartConatiner>
                 <div> {`Rs${item.price}/-`}</div>
-                <Add onClick={(i)=> console.log(i)}>
-                  ADD TO  Cart
-                </Add>
+                <Add >ADD TO Cart</Add>
               </CartConatiner>
             </ProductContainer>
           );
