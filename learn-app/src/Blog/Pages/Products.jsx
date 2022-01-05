@@ -34,7 +34,7 @@ class Products extends React.Component {
                 <Link to={`${url}/${path}`}>
                   <Banner>
                     <ProductBanner
-                      src="https://i.imgur.com/eUmK64G.jpg"
+                      src={item.image}
                       alt="logo"
                     />
                   </Banner>

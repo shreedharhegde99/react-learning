@@ -31,7 +31,7 @@ class App extends React.Component {
       <>
         <Header>
           <Link to="/">
-            <Logo src="https://i.imgur.com/Ac3Od4e.png" alt="Logo" />
+            <Logo src="https://i.imgur.com/a4eedVo.png" alt="Logo" />
           </Link>
           <Div>
             <Link to="/">
@@ -55,7 +55,7 @@ class App extends React.Component {
             </Link>
 
             <Link to="/cart">
-              <CartLogo src="https://i.imgur.com/jInY31O.png" alt="cart logo" />
+              <CartLogo src="https://i.imgur.com/coKbFQC.jpg" alt="cart logo" />
             </Link>
           </Div>
         </Header>

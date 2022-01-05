@@ -13,10 +13,9 @@ class Home extends React.Component {
   render() {
     return (
       <>
-
         <img
           style={Image}
-          src="https://i.imgur.com/sEGZOik.png"
+          src="https://i.imgur.com/dHEqZEd.png"
           alt="add to cart"
         />
       </>

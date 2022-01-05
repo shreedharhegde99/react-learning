@@ -30,8 +30,9 @@ const Category = (props) => {
                 <Banner>
                   <ProductBanner src={item.image} alt="logo" />
                 </Banner>
-                {item.name}
+                {item.name} <br />
               </Link>
+                {`Rs${item.price}/-`}
             </ProductContainer>
           );
         })}
