@@ -20,7 +20,6 @@ class Products extends React.Component {
   render() {
     const { url } = this.props.match
     const{props}  = this
-    // console.log(url)
     return (
       <>
         <div style={style}>

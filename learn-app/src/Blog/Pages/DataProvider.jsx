@@ -7,6 +7,7 @@ class DataProvider extends React.Component{
     super(props)
     this.state = {
       authorised: false,
+      cart:[]
       
     }
    this.handleAuth=this.handleAuth.bind(this) 
@@ -17,9 +18,9 @@ class DataProvider extends React.Component{
   }
 
   render() {
-    const { authorised } = this.state
+    const { authorised,cart } = this.state
     const { handleAuth } = this
-    const value = {authorised,handleAuth}
+    const value = {authorised,handleAuth,cart}
     // const { } = this
     // const value={}
     return (

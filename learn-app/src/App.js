@@ -5,6 +5,7 @@ import {
   Container,
   Login,
   Div,
+  CartLength,
   CartLogo,
   Logo,
 } from "./Blog/Pages/AppStyles";
@@ -26,7 +27,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { authorised, handleAuth } = this.context;
+    const { authorised, handleAuth, cart } = this.context;
+    const length = cart.length || 0;
     return (
       <>
         <Header>
@@ -47,16 +49,18 @@ class App extends React.Component {
               <Container>Contact Us</Container>
             </Link>
           </Div>
+
           <Div>
             <Link to="/login">
               <Login onClick={this.handleLogin}>
                 {authorised ? "Logout" : "Login"}
               </Login>
             </Link>
-
-            <Link to="/cart">
-              <CartLogo src="https://i.imgur.com/coKbFQC.jpg" alt="cart logo" />
-            </Link>
+            <Div>
+              <Link to="/cart">
+                <CartLength>{length}</CartLength>
+              </Link>
+            </Div>
           </Div>
         </Header>
 

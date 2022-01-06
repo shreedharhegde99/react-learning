@@ -15,7 +15,7 @@ const Header = styled.div`
 `;
 
 const Container = styled.div`
-  color: blue;
+  color: #000000d9;
   text-align: center;
   font-weight: bold;
   height: 20px;
@@ -23,14 +23,33 @@ const Container = styled.div`
   padding: 10px;
   margin: 10px;
   cursor: pointer;
+  underline:none;
+  :hover {
+    background: #b5aeaea6;
+    border-radius: 20px;
+    color: blue;
+  }
 `;
 
 const Login = styled(Container)`
+width:80px;
   color: green;
+  :hover{
+    color:green;
+  }
 `;
 
 const Div = styled.div`
   display: flex;
+`;
+const CartLength = styled(Div)`
+  display: block;
+  margin-top: 13px;
+  height: 35px;
+  width: 35px;
+  padding: 10px;
+  cursor: pointer;
+  background-image: url("https://i.imgur.com/s6godLW.png");
 `;
 
 
@@ -48,7 +67,7 @@ const Logo = styled(CartLogo)`
   border-radius: 40px;
 `;
 
-export { Header, Container, Login, Div, CartLogo, Logo };
+export { Header, Container, Login, Div, CartLength, CartLogo, Logo };
 
 
 /* Home page related styles end Here */
