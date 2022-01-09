@@ -6,7 +6,6 @@ import Todo from "./react-redux/Todo";
 function App() {
   return (
     <>
-      <div className="App">Hello world</div> <br />
       <br />
       <Todo />
     </>
