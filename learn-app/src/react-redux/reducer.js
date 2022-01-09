@@ -1,15 +1,8 @@
-import { addTodo, toggleTodo } from "./action ";
-import { v4 as uuid } from "uuid";
+import { addTodo, toggleTodo, deletion } from "./action ";
 
 const initState = {
   count: 0,
-  todo: [
-    {
-      title: "Hello world",
-      status: false,
-      id: uuid(),
-    },
-  ],
+  todo: [],
 };
 
 const reducer = (state, { type, payload }) => {
@@ -26,6 +19,12 @@ const reducer = (state, { type, payload }) => {
         todo: state.todo.map((item) =>
           item.id === payload ? { ...item, status: !item.status } : item
         ),
+      };
+
+    case deletion:
+      return {
+        ...state,
+        todo: state.todo.filter((item) => (item.id !== payload ? item : "")),
       };
     default:
       return state;

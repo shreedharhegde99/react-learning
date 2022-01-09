@@ -1,6 +1,7 @@
 import { v4 as uuid } from "uuid";
 const addTodo = "ADD_TODO";
 const toggleTodo = "TOGGLE_TODO";
+const deletion = "DELETE";
 
 const todo = (item) => ({
   type: addTodo,
@@ -15,5 +16,10 @@ const toggle = (payload) => ({
   type: toggleTodo,
   payload,
 });
-export { add, reduce, addTodo, toggleTodo };
-export { increment, decrement, todo, toggle };
+
+const remove = (payload) => ({
+  type: deletion,
+  payload,
+});
+export { addTodo, toggleTodo, deletion };
+export { todo, toggle, remove };

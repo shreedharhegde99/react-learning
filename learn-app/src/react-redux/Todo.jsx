@@ -1,50 +1,110 @@
 import React from "react";
-import {connect}  from "react-redux"
+import { connect } from "react-redux";
+import { todo, toggle, remove } from "./action ";
 
 class Todo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ""
+      value: "",
     };
+    this.addTodo = this.addTodo.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
+
+  addTodo() {
+    const { value } = this.state;
+    const { todo } = this.props;
+    todo(value);
+    // console.log(value)
+  }
+
+  handleRemove(id) {
+    const { remove } = this.props;
+    remove(id);
+  }
+
+  handleToggle = (id) => {
+    const { toggle } = this.props;
+    toggle(id);
+  };
+
   render() {
-    console.log(this.props)
-    const{value}  =this.state
-    const todo =[]
+    // console.log(this.props)
+    const { todoList, length } = this.props;
+    let total = length || 0;
+    let completed = todoList?.filter((item) => item?item.status === true:[]);
+    completed = completed.length || 0;
+    const incomplete = total - completed || 0;
+    const { value } = this.state;
     return (
-      <React.Fragment>
+      <>
         <input
           value={value}
           onChange={(e) => this.setState({ value: e.target.value })}
         />
         <button onClick={this.addTodo}>ADD TODO</button>
         <ul>
-          {todo &&
-            todo?.map((item) => {
-              return (
-                <div
-                  key={item.id}
-                  style={{ display: "flex", justifyContent: "space-around" }}
-                >
-                  <div>
-                    <li>{item.title}</li>
-                  </div>
+          {todoList &&
+            todoList?.map((item) => { 
+              return ( item&&
+                <li key={item.id}>
                   <div
-                    style={item.status ? { color: "green" } : { color: "red" }}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-around",
+                      margin: "10px",
+                      width: "300px",
+                    }}
                   >
-                    {item.status ? "Complete" : "Incomplete"}
+                    <div>{item.title}</div>
+                    <div
+                      style={
+                        item.status ? { color: "green" } : { color: "red" }
+                      }
+                    >
+                      {item.status ? "Complete" : "Incomplete"}
+                    </div>
+                    <div>
+                      <button onClick={() => this.handleToggle(item.id)}>
+                        Toggle
+                      </button>
+                      <button onClick={() => this.handleRemove(item.id)}>
+                        Delete
+                      </button>
+                      <br />
+                    </div>
                   </div>
-                  <div>
-                    <button onClick={() => {}}>Toggle</button>
-                  </div>
-                </div>
+                </li>
               );
             })}
         </ul>
-      </React.Fragment>
+        <div
+          style={{
+            width: "300px",
+            display: "flex",
+            justifyContent: "space-around",
+          }}
+        >
+          <div style={{ textAlign: "left" }}>Total:{total || 0}</div>
+          <div style={{ textAlign: "left" }}>Completed:{completed || 0}</div>
+          <div style={{ textAlign: "left" }}>Incomplete:{incomplete || 0}</div>
+        </div>
+      </>
     );
   }
 }
-export default connect()(Todo)
+
+const mapStateToProps = (state) => ({
+  todoList: state.todo,
+  length: state.todo.length,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  todo: (payload) => dispatch(todo(payload)),
+  toggle: (id) => dispatch(toggle(id)),
+  remove: (id) => dispatch(remove(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todo);
 // export {Todo};
