@@ -16,8 +16,12 @@ class Todo extends React.Component {
   addTodo() {
     const { value } = this.state;
     const { todo } = this.props;
-
-    todo(value);
+    if (value) {
+      todo(value);
+    }
+    else {
+      alert("add something")
+    }
 
     this.setState({
       value: "",
@@ -53,7 +57,6 @@ class Todo extends React.Component {
     completed = completed.length || 0;
     const incomplete = total - completed || 0;
     const { value } = this.state;
-    const style = {};
     return (
       <>
         <h3>Simple Todo App</h3>
