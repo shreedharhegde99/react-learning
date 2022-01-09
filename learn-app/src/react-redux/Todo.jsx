@@ -74,7 +74,8 @@ class Todo extends React.Component {
                       <div
                         style={{
                           display: "flex",
-                          justifyContent: "space-around",
+                          flexDirection: "row",
+                            justifyContent: "space-evenly",
                           margin: "10px",
                           // width: "300px",
                         }}
