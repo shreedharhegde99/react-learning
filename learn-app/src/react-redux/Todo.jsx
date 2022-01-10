@@ -10,13 +10,24 @@ class Todo extends React.Component {
     };
     this.addTodo = this.addTodo.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
+    this.handleKey = this.handleKey.bind(this);
   }
 
   addTodo() {
     const { value } = this.state;
     const { todo } = this.props;
-    todo(value);
-    // console.log(value)
+    if (value) {
+      todo(value);
+      this.setState({
+        value:""
+      })
+    }
+  }
+
+  handleKey(e) {
+    if (e.code === "Enter") {
+      this.addTodo();
+    }
   }
 
   handleRemove(id) {
@@ -29,11 +40,16 @@ class Todo extends React.Component {
     toggle(id);
   };
 
+  componentWillUnmount() {
+    localStorage.removeItem("state")
+  }
+
   render() {
-    // console.log(this.props)
     const { todoList, length } = this.props;
     let total = length || 0;
-    let completed = todoList?.filter((item) => item?item.status === true:[]);
+    let completed = todoList?.filter((item) =>
+      item ? item.status === true : []
+    );
     completed = completed.length || 0;
     const incomplete = total - completed || 0;
     const { value } = this.state;
@@ -42,40 +58,43 @@ class Todo extends React.Component {
         <input
           value={value}
           onChange={(e) => this.setState({ value: e.target.value })}
+          onKeyUp={(e) => this.handleKey(e)}
         />
         <button onClick={this.addTodo}>ADD TODO</button>
         <ul>
           {todoList &&
-            todoList?.map((item) => { 
-              return ( item&&
-                <li key={item.id}>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-around",
-                      margin: "10px",
-                      width: "300px",
-                    }}
-                  >
-                    <div>{item.title}</div>
+            todoList?.map((item) => {
+              return (
+                item && (
+                  <li key={item.id}>
                     <div
-                      style={
-                        item.status ? { color: "green" } : { color: "red" }
-                      }
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-around",
+                        margin: "10px",
+                        width: "300px",
+                      }}
                     >
-                      {item.status ? "Complete" : "Incomplete"}
+                      <div>{item.title}</div>
+                      <div
+                        style={
+                          item.status ? { color: "green" } : { color: "red" }
+                        }
+                      >
+                        {item.status ? "Complete" : "Incomplete"}
+                      </div>
+                      <div>
+                        <button onClick={() => this.handleToggle(item.id)}>
+                          Toggle
+                        </button>
+                        <button onClick={() => this.handleRemove(item.id)}>
+                          Delete
+                        </button>
+                        <br />
+                      </div>
                     </div>
-                    <div>
-                      <button onClick={() => this.handleToggle(item.id)}>
-                        Toggle
-                      </button>
-                      <button onClick={() => this.handleRemove(item.id)}>
-                        Delete
-                      </button>
-                      <br />
-                    </div>
-                  </div>
-                </li>
+                  </li>
+                )
               );
             })}
         </ul>
@@ -96,8 +115,8 @@ class Todo extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  todoList: state.todo,
-  length: state.todo.length,
+  todoList: state.reducer.todo,
+  length: state.reducer.todo.length,
 });
 
 const mapDispatchToProps = (dispatch) => ({

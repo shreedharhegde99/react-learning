@@ -1,12 +1,20 @@
-import { addTodo, toggleTodo, deletion } from "./action ";
+import { addTodo, toggleTodo, deletion, add, reduce } from "./action ";
+import { loadData } from "./localStorage";
 
-const initState = {
+const initState = loadData("state")?.reducer || {
   count: 0,
   todo: [],
 };
 
-const reducer = (state, { type, payload }) => {
+const reducer = (state = initState, { type, payload }) => {
   switch (type) {
+    case add:
+      return { ...state, count: state.count + 1 };
+    case reduce:
+      return {
+        ...state,
+        count: state.count - 1,
+      };
     case addTodo:
       return {
         ...state,
