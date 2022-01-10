@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { todo, toggle, remove } from "./action ";
+import {input} from "../style/style"
 
 class Todo extends React.Component {
   constructor(props) {
@@ -30,7 +31,6 @@ class Todo extends React.Component {
 
   handleEnter(e) {
     e.preventDefault();
-    console.log(e.code);
     if (e.code == "Enter") {
       this.addTodo();
     } else if (e.code === "NumpadEnter") {
@@ -48,13 +48,14 @@ class Todo extends React.Component {
     toggle(id);
   };
 
+  
   render() {
-    const { todoList, length } = this.props;
-    let total = length || 0;
+    const { todoList } = this.props;
+    let total = todoList?.length || 0;
     let completed = todoList?.filter((item) =>
       item ? item.status === true : []
     );
-    completed = completed.length || 0;
+    completed = completed?.length || 0;
     const incomplete = total - completed || 0;
     const { value } = this.state;
     return (
@@ -62,12 +63,13 @@ class Todo extends React.Component {
         <h3>Simple Todo App</h3>
         <input
           placeholder="add something...."
-            value={value}
-            onChange={(e) => this.setState({ value: e.target.value })}
-            onKeyUp={(e) => this.handleEnter(e)}
+          value={value}
+          onChange={(e) => this.setState({ value: e.target.value })}
+          onKeyUp={(e) => this.handleEnter(e)}
+          style={ input}
           />
           <button onClick={() => this.addTodo()}>ADD TODO</button>
-        <div style={{width:"50%",margin:"2% 10% 0 20%",padding:"2%",border:"solid 1px black",justifyContent:"center"}}>
+        <div style={{width:"50%",margin:"2% 10% 0 20%",padding:"2%",justifyContent:"center"}}>
           <ul style={{ listStyle: "square" }}>
             {todoList &&
               todoList?.map((item) => {
@@ -128,7 +130,7 @@ class Todo extends React.Component {
 
 const mapStateToProps = (state) => ({
   todoList: state.todo,
-  length: state.todo.length,
+  
 });
 
 const mapDispatchToProps = (dispatch) => ({

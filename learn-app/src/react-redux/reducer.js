@@ -1,16 +1,16 @@
 import { addTodo, toggleTodo, deletion } from "./action ";
+import { loadData } from "../localStorage/localStorage";
 
-const initState = {
+const initState = loadData("state") || {
   count: 0,
   todo: [],
 };
-
 const reducer = (state, { type, payload }) => {
   switch (type) {
     case addTodo:
       return {
         ...state,
-        todo: [...state.todo, payload],
+        todo: [...state?.todo, payload],
       };
 
     case toggleTodo:
