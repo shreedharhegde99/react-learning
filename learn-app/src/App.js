@@ -5,7 +5,7 @@ import {
   Container,
   Login,
   Div,
-  CartLength,
+  Cart,
   CartLogo,
   Logo,
 } from "./Blog/Pages/AppStyles";
@@ -50,17 +50,19 @@ class App extends React.Component {
             </Link>
           </Div>
 
-          <Div>
+          {/* login & cart component        */}
+              <Div>
             <Link to="/login">
               <Login onClick={this.handleLogin}>
                 {authorised ? "Logout" : "Login"}
               </Login>
             </Link>
-            <Div>
-              <Link to="/cart">
-                <CartLength>{length}</CartLength>
-              </Link>
-            </Div>
+            <Cart>
+            </Cart>
+            <div style={{marginTop:"5px",marginLeft:"-5px"}}>{length}</div>
+
+
+          
           </Div>
         </Header>
 
@@ -70,6 +72,8 @@ class App extends React.Component {
   }
 }
 
+
+// link to cart  include {length}
 App.contextType = Data;
 
 export default App;

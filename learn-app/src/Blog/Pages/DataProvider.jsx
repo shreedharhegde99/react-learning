@@ -1,35 +1,40 @@
 import React from "react";
 
-const Data = React.createContext()
+const Data = React.createContext();
 
-class DataProvider extends React.Component{
+class DataProvider extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       authorised: false,
-      cart:[]
-      
-    }
-   this.handleAuth=this.handleAuth.bind(this) 
+      cart: [],
+    };
+    this.handleAuth = this.handleAuth.bind(this);
+    this.handleAddCart = this.handleAddCart.bind(this);
   }
 
   handleAuth(val) {
-    this.setState({authorised:val})
+    this.setState({ authorised: val });
   }
 
+  handleAddCart(items) {
+    const{name} =items
+    this.setState({
+      ...this.state,
+      cart:[...this.state.cart,{name:1}]
+    })
+  }
+  
   render() {
-    const { authorised,cart } = this.state
-    const { handleAuth } = this
-    const value = {authorised,handleAuth,cart}
+    const { authorised, cart } = this.state;
+    const { handleAuth, handleAddCart } = this;
+    const value = { authorised, handleAuth, cart, handleAddCart };
     // const { } = this
     // const value={}
-    return (
-      <Data.Provider value={value }>
-        {this.props.children}
-       </Data.Provider>
-    );
+    console.log(cart);
+    console.log(this.state)
+    return <Data.Provider value={value}>{this.props.children}</Data.Provider>;
   }
 }
- 
-export   {DataProvider}
-export  default Data
+export { DataProvider };
+export default Data;

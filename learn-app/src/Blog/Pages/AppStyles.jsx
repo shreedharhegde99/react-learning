@@ -11,7 +11,7 @@ const Header = styled.div`
   background: #f7f5b5;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 const Container = styled.div`
@@ -41,22 +41,29 @@ width:80px;
 
 const Div = styled.div`
   display: flex;
+  flex-direction:row;
+  align-items:center;
 `;
-const CartLength = styled(Div)`
+
+const Cart = styled(Div)`
+  // float:left;
+  // color: blue;
   display: block;
-  margin-top: 13px;
+  // margin-top: 13px;
   height: 35px;
-  width: 35px;
-  padding: 10px;
+  width: 30px;
+  // padding: 10px;
   cursor: pointer;
-  background-image: url("https://i.imgur.com/s6godLW.png");
+  background-image: url("https://i.imgur.com/w7USk9N.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 `;
 
 
 
 const CartLogo = styled.img`
   height: 35px;
-  width: 35px;
+  width: 40px;
   padding: 10px;
   cursor: pointer;
 `;
@@ -67,7 +74,7 @@ const Logo = styled(CartLogo)`
   border-radius: 40px;
 `;
 
-export { Header, Container, Login, Div, CartLength, CartLogo, Logo };
+export { Header, Container, Login, Div, Cart, CartLogo, Logo };
 
 
 /* Home page related styles end Here */

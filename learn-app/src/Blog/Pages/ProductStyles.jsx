@@ -6,13 +6,13 @@ const ProductContainer = styled.div`
   width: 150px;
   margin: 10px;
   padding: 10px 25px;
-  border: solid pink 1px;
+  // border: solid pink 1px;
   border-radius: 8px;
   font-size: 18px;
   color: #525252;
   text-align: center;
   background: #d0e8ae;
-  overflow-y: scroll;
+  // overflow-y: scroll;
 `;
 const Banner = styled.div`
   height: 80px;

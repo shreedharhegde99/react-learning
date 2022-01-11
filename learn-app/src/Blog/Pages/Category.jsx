@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import productList from "../Lists/List";
 import items from "../Lists/ProductList";
+import Data from "./DataProvider"
 import {
   ProductContainer,
   Banner,
@@ -21,6 +22,15 @@ class Category extends React.Component{
     super(props)
   }
   
+
+  handleAdd = (item) => {
+    // console.log(item)
+    // console.log(this.context)
+    const { handleAddCart } = this.context
+    handleAddCart(item)
+
+    
+  }
   
   
   // console.log(props);
@@ -45,7 +55,7 @@ class Category extends React.Component{
               </Link>
               <CartConatiner>
                 <div> {`Rs${item.price}/-`}</div>
-                <Add >ADD TO Cart</Add>
+                <Add onClick={()=>this.handleAdd(item)}>ADD TO Cart</Add>
               </CartConatiner>
             </ProductContainer>
           );
@@ -55,4 +65,5 @@ class Category extends React.Component{
   );
   } 
 };
+Category.contextType= Data
 export default Category;
