@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import productList from "../Lists/List";
@@ -24,8 +23,7 @@ class Category extends React.Component{
   
 
   handleAdd = (item) => {
-    // console.log(item)
-    // console.log(this.context)
+    console.log(item)
     const { handleAddCart } = this.context
     handleAddCart(item)
 

@@ -8,7 +8,7 @@ const Header = styled.div`
   // border: solid 2px black;
   height: 80px;
   border-radius: 10px;
-  background: #f7f5b5;
+  // background: #f7f5b5;
   display: flex;
   align-items: center;
   justify-content: space-around;

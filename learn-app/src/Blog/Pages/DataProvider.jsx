@@ -17,7 +17,26 @@ class DataProvider extends React.Component {
     this.setState({ authorised: val });
   }
 
-  handleAddCart(products) {
+  handleAddCart(product) {
+
+    const existItem = this.state.cart?.find(item => item.id === product.id) || false
+    console.log(existItem);
+    
+    if (existItem) { 
+    // console.log(existItem)
+      this.setState({
+        ...this.state,
+        cart:[...this.state.cart,{...existItem,count:existItem.count+1}]
+      })
+   }
+    else {
+      this.setState({
+        ...this.state,
+        cart:[...this.state.cart,{id:product.id,count:1}]
+      })
+      
+    }
+
     
     
    
@@ -27,10 +46,7 @@ class DataProvider extends React.Component {
     const { authorised, cart } = this.state;
     const { handleAuth, handleAddCart } = this;
     const value = { authorised, handleAuth, cart, handleAddCart };
-    // const { } = this
-    // const value={}
     console.log(cart);
-    // console.log(this.state)
     return <Data.Provider value={value}>{this.props.children}</Data.Provider>;
   }
 }
