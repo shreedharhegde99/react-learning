@@ -23,7 +23,7 @@ class Category extends React.Component{
   
 
   handleAdd = (item) => {
-    console.log(item)
+    // console.log(item)
     const { handleAddCart } = this.context
     handleAddCart(item)
 

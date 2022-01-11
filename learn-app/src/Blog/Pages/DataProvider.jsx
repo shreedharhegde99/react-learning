@@ -18,30 +18,28 @@ class DataProvider extends React.Component {
   }
 
   handleAddCart(product) {
-
-    const existItem = this.state.cart?.find(item => item.id === product.id) || false
+    const { cart } = this.state
+    const length = cart.length
+    const existItem =
+    length>0 && cart?.filter((item) => item.id === product.id?{...item,count:product.count+1}:"") || false
     console.log(existItem);
-    
-    if (existItem) { 
-    // console.log(existItem)
-      this.setState({
-        ...this.state,
-        cart:[...this.state.cart,{...existItem,count:existItem.count+1}]
-      })
-   }
-    else {
-      this.setState({
-        ...this.state,
-        cart:[...this.state.cart,{id:product.id,count:1}]
-      })
-      
-    }
 
-    
-    
-   
+    if (existItem) {
+      console.log("often")
+      this.setState({
+        cart: [
+          ...existItem,
+          { id:product.id,count:product.count+1 },
+        ],
+      });
+    } else {
+      console.log("first time")
+      this.setState({
+        cart: [...this.state.cart, { id: product.id, count: 1 }],
+      });
+    }
   }
-  
+
   render() {
     const { authorised, cart } = this.state;
     const { handleAuth, handleAddCart } = this;
