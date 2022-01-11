@@ -21,21 +21,28 @@ class DataProvider extends React.Component {
     // console.log(product)
 
     const { cart } = this.state
+    let length = cart.length;
     const { name, price, id } = product
-      let payload = {name,price,id,count:1}
+     const payload = {name,price,id,count:1}
+    let items = length > 0 && cart?.map(item => {
+      if (item.id === payload.id) {
+       return {...item,count:item.count+1}
+      } 
+      else return item
+    }) 
 
-    const items = cart?.map(item => {
-      if (item.id === product.id) {
-        return {...item,count:item.count+1}
-      }
-      else return ""
-      
-     
-    })
     console.log(items)
-    this.setState({
-      cart:[...this.state.cart,payload]
-    })
+
+    if (length < 1) {
+      this.setState({
+          cart:[payload]
+        })
+    }
+    else {
+      this.setState({
+        cart:[payload,...items]
+      })
+    }
     
     
     
