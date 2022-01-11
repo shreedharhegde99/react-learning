@@ -17,12 +17,10 @@ class DataProvider extends React.Component {
     this.setState({ authorised: val });
   }
 
-  handleAddCart(items) {
-    const{name} =items
-    this.setState({
-      ...this.state,
-      cart:[...this.state.cart,{name:1}]
-    })
+  handleAddCart(products) {
+    
+    
+   
   }
   
   render() {
@@ -32,7 +30,7 @@ class DataProvider extends React.Component {
     // const { } = this
     // const value={}
     console.log(cart);
-    console.log(this.state)
+    // console.log(this.state)
     return <Data.Provider value={value}>{this.props.children}</Data.Provider>;
   }
 }
