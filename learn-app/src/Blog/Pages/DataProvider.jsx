@@ -18,35 +18,44 @@ class DataProvider extends React.Component {
   }
 
   handleAddCart(product) {
-    // console.log(product)
+    const { cart } = this.state;
 
-    const { cart } = this.state
+    let tempCart = cart?.map((prod) =>
+      prod.id === product.id ? { ...prod, count: prod.count + 1 } : prod
+    );
+
+    if (tempCart.findIndex((item) => item.id === product.id) === -1) {
+      tempCart = [...tempCart, { ...product, count: 1 }];
+    }
+
+    this.setState({
+      cart: tempCart,
+    });
+
+    const { cart } = this.state;
     let length = cart.length;
-    const { name, price, id } = product
-     const payload = {name,price,id,count:1}
-    let items = length > 0 && cart?.map(item => {
-      if (item.id === payload.id) {
-       return {...item,count:item.count+1}
-      } 
-      else return item
-    }) 
+    const { name, price, id } = product;
+    const payload = { name, price, id, count: 1 };
 
-    console.log(items)
+    let items =
+      length > 0 &&
+      cart?.map((item) => {
+        if (item.id === payload.id) {
+          return { ...item, count: item.count + 1 };
+        } else return item;
+      });
+
+    console.log(items);
 
     if (length < 1) {
       this.setState({
-          cart:[payload]
-        })
-    }
-    else {
+        cart: [payload],
+      });
+    } else {
       this.setState({
-        cart:[payload,...items]
-      })
+        cart: [payload, ...items],
+      });
     }
-    
-    
-    
-    
   }
 
   render() {
@@ -59,3 +68,37 @@ class DataProvider extends React.Component {
 }
 export { DataProvider };
 export default Data;
+
+
+/* handleAddCart(product) {
+    const { cart } = this.state;
+
+    if (cart.length <= 0) {
+      this.setState({
+        cart: [{ ...product, count: 1 }],
+      });
+    } else {
+      const tempCart = cart?.map((prod) =>
+        prod.id === product.id ? { ...prod, count: prod.count + 1 } : prod
+      );
+
+      this.setState({
+        cart: tempCart,
+      });
+    } */
+
+    /*  handleAddCart(product) {
+    const { cart } = this.state;
+
+    let tempCart = cart?.map((prod) =>
+      prod.id === product.id ? { ...prod, count: prod.count + 1 } : prod
+    );
+    
+    if (tempCart.findIndex((item) => item.id === product.id) === -1) {
+      tempCart = [...tempCart, { ...product, count: 1 }];
+    }
+
+    this.setState({
+      cart: tempCart,
+    });
+  } */
