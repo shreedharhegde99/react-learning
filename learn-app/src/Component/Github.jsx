@@ -1,5 +1,5 @@
 import React from 'react';
-
+import connect from "redux"
 
 
 class GitHubData extends React.Component{
@@ -33,6 +33,14 @@ class GitHubData extends React.Component{
     );
   }
 }
+
+const mapStateToProps = state => ({
+  userData:state.userData
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchData:
+})
 
 
 
