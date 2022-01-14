@@ -1,5 +1,6 @@
 import React from 'react';
-import connect from "redux"
+import {connect} from "react-redux"
+import {fetchData} from "../Redux/action"
 
 
 class GitHubData extends React.Component{
@@ -10,6 +11,8 @@ class GitHubData extends React.Component{
     }
   }
 
+
+  
   handleChange = (e) => {
     this.setState({
       value:e.target.value
@@ -18,7 +21,9 @@ class GitHubData extends React.Component{
 
 
   render() {
-    const{value}= this.state
+    const { value } = this.state
+    const { userData, fetchData,loading } = this.props
+    // console.log(loading);
     return (
       <>
         <div>
@@ -27,7 +32,11 @@ class GitHubData extends React.Component{
             value={value}
             onChange={(e) => this.handleChange(e)}
           />
-          <button>Search</button>
+          <button onClick={() => fetchData(value)}>Search</button>
+        </div>
+        <div>
+          {loading&& "Loading....."}
+          {!loading&&userData && userData.map((item,i) => <img key={i} src={item.avatar_url}  style={{height:"100px",width:"100px"}}/>)}
         </div>
       </>
     );
@@ -35,13 +44,15 @@ class GitHubData extends React.Component{
 }
 
 const mapStateToProps = state => ({
-  userData:state.userData
+  userData: state.userData,
+  loading: state.isLoading,
+  error:state.iserror
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchData:
+  fetchData:(payload)=>dispatch(fetchData(payload))
 })
 
 
 
-export   default  GitHubData
+export   default connect(mapStateToProps,mapDispatchToProps)( GitHubData)

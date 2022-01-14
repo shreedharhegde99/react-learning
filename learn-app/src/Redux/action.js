@@ -21,9 +21,8 @@ export const FetchRequest = "FETCH_REQUEST";
 export const FetchSuccess = "FETCH_SUCCESS";
 export const FetchFailure = "FETCH_FAILURE";
 
-const fetchUser = (payload) => ({
+const fetchUser = () => ({
   type: FetchRequest,
-  payload,
 });
 
 const fetchSuccecss = (payload) => ({
