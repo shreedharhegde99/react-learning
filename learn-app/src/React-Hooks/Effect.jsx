@@ -14,14 +14,16 @@ function GitHub() {
   },[data])
 
   const handleClick = () => {
-    axios
-      .get("https://api.github.com/search/users", {
-        params: {
-          q: query,
-        },
-      })
-      .then((res) => res.data)
-      .then((res) => setData(res.items))
+    if (query) {
+      axios
+        .get("https://api.github.com/search/users", {
+          params: {
+            q: query,
+          },
+        })
+        .then((res) => res.data)
+        .then((res) => setData(res.items));
+    }
   };
 // console.log("no effect here");
   return (
