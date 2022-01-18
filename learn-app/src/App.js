@@ -7,11 +7,13 @@ import Consumer from "./React-Hooks/ContextConsumer";
 import GitHubSearch from "./React-Hooks/GitHubSearchHooks";
 import Custom from "./React-Hooks/CustomExp";
 
+import Todo from "./Redux-hooks/Todo";
+
 function App() {
   const [show, setShow] = useState(true);
   return (
     <>
-      <div>Hello world</div>
+      {/* <div>Hello world</div>
       <HooksExample />
       <br />
       <hr />
@@ -30,7 +32,8 @@ function App() {
       <GitHubSearch />
       <br />
       <hr />
-      <Custom />
+      <Custom /> */}
+      <Todo />
     </>
   );
 }
