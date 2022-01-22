@@ -5,4 +5,4 @@ const Add = (payload) => ({
   payload,
 });
 
-export { add };
+export { add, Add };
